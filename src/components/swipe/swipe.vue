@@ -100,7 +100,7 @@ export default {
       margin: 3px 0;
     }
     p.current {
-      font-size: 16px;
+      font-size: 14px;
       color: #fff;
     }
   }

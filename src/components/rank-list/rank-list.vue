@@ -1,24 +1,27 @@
 <template>
-  <div class="rank-list" v-if="rankItems.songs">
-    <div class="top">
-      <Header></Header>
-      <back class="title">
-        <span>{{rankItems.info.rankname}}</span>
-      </back>
-    </div>
-    
-    <!-- 包裹容器 -->
-    <div class="wrapper">
-      <div class="bg-img">
-        <img :src="rankItems.info.imgurl | imgFilter" alt="">
+  <transition name='ranklist'>
+    <div class="rank-list" v-if="rankItems.songs">
+      <div class="top">
+        <Header></Header>
+        <back class="title">
+          <span>{{rankItems.info.rankname}}</span>
+        </back>
       </div>
-      <div class="song-list">
-        <song :song-list='rankItems.songs.list'></song>
+      
+      <!-- 包裹容器 -->
+      <div class="wrapper">
+        <div class="bg-img">
+          <img :src="rankItems.info.imgurl | imgFilter" alt="">
+        </div>
+        <div class="song-list">
+          <song :song-list='rankItems.songs.list'></song>
+        </div>
       </div>
+      
+      
     </div>
-    
-    
-  </div>
+  </transition>
+  
 </template>
 
 <script>
@@ -64,19 +67,41 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.ranklist-enter-active,.ranklist-leave-active {
+  transition: all 0.2s;
+}
+.ranklist-enter,.ranklist-leave-to {
+  transform: translate3d(100%,0,0);
+}
   .rank-list {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    // bottom: 0;
+    bottom: 0;
     z-index: 100;
+    width: 100%;
     background: #fff;
+    overflow-y: auto;
     .top {
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
       width: 100%;
+    }
+    .wrapper {
+      .bg-img {
+        // margin-bottom: -40px;
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .song-list {
+        background: #fff;
+        // margin-top: -40px;
+      }
     }
   }
 </style>

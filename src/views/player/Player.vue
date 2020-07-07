@@ -84,7 +84,7 @@ export default {
       return this.playing ? require('assets/image/pause_icon.png'):require('assets/image/play_icon.png')
     },
     currentSongImgUrl() {
-      if(!this.currentSong.imgUrl) return ''
+      if(!this.currentSong.imgUrl) return './kg-bg.jpg'
       return this.currentSong.imgUrl.replace(/{size}/, '400')
     },
     percent() {
