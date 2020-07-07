@@ -1,5 +1,5 @@
 # kugou-music
-
+> 谷歌浏览器手机模式下预览
 ## Project setup
 ```
 yarn install
